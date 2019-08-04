@@ -1,0 +1,19 @@
+<div class="login">
+  <div class="login__form">
+    <h1 class="login__form__title"> Login </h1>
+    <div class="form__name">
+      <label>Name</label>
+      <input [(ngModel)]="name" type="text">
+    </div>
+    <div class="form__pass">
+      <label>Password</label>
+      <input [(ngModel)]="password" type="password">
+    </div>
+    <div class="form__submit">
+      <button class="btn"
+              [disabled]="disableLogin"
+              (click)="login()"
+      >Login</button>
+    </div>
+  </div>
+</div>
