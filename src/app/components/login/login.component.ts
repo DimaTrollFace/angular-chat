@@ -8,8 +8,6 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   public disableLogin = false;
-  public name: string;
-  public password: string;
 
   constructor(public authService: AuthService) {
 
@@ -20,8 +18,14 @@ export class LoginComponent implements OnInit {
   disableLoginBtn() {
     this.disableLogin = true;
   }
+  enableLoginBtn() {
+    this.disableLogin = false;
+  }
   login() {
     this.disableLoginBtn();
-    this.authService.loginUser(this.name, this.password);
+    this.authService.doLoginGoogle()
+        .then((user) => {
+          this.enableLoginBtn();
+        });
   }
 }

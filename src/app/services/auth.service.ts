@@ -5,13 +5,14 @@ import { auth } from 'firebase/app';
   providedIn: 'root'
 })
 export class AuthService {
-  private currentUser: any;
   constructor(public afAuth: AngularFireAuth) {}
-  getCurrentUser() {
-    return this.currentUser;
+  get currentUser() {
+    return this.afAuth.auth.currentUser;
   }
-  loginUser(name, password) {
-    this.afAuth;
-    debugger;
+  doLoginGoogle() {
+    return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
+        .then((resources) => {
+          return this.currentUser;
+        });
   }
 }
